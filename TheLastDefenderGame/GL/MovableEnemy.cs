@@ -9,8 +9,12 @@ namespace TheLastDefenderGame.GL
 {
     abstract class MovableEnemy : Enemy
     {
-        public MovableEnemy(Image image, GameCell cell) : base(image, cell)
+        public MovableEnemy(Image image, GameCell cell, GameDirection direction) : base(image, cell, direction)
         {
+        }
+        public override void Render()
+        {
+            Move();
         }
         public abstract void Move();
         public abstract GameCell NextCell();

@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace TheLastDefenderGame.GL
 {
-    class Enemy : Combatant
+    abstract class Enemy : Combatant
     {
         protected bool isFiringState;
-        public Enemy(Image image, GameCell cell) : base(GameObjectType.ENEMY, image, cell)
+        public Enemy(Image image, GameCell cell,GameDirection direction) : base(GameObjectType.ENEMY, image, cell,direction)
         {
             isFiringState = false;
         }
+        public abstract void Render();
         public override void Fire()
         {
             if (isFiringState)

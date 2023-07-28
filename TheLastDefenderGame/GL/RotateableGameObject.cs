@@ -10,13 +10,15 @@ namespace TheLastDefenderGame.GL
     public class RotateableGameObject : GameObject
     {
         protected Image image;
-        public RotateableGameObject(GameObjectType type, Image image) : base(type, image)
+        public RotateableGameObject(GameCell cell,GameObjectType type, Image image) : base(type, image)
         {
+            CurrentCell = cell;
             this.image = image;
         }
-        public RotateableGameObject(GameObjectType type, char displayCharacter) : base(type, displayCharacter)
+        public RotateableGameObject(GameCell cell,GameObjectType type,char displayCharacter):base(type,displayCharacter)
         {
-            image = DisplayImage;
+            CurrentCell = cell;
+            image = CurrentCell.PictureBox.Image;
         }
         protected void SetImageOrientation(GameDirection direction)
         {

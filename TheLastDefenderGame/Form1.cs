@@ -22,7 +22,8 @@ namespace TheLastDefenderGame
             Image playerImage = Resources.Tank;
             playerImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
             game.AddPlayer(2, 2, playerImage);
-            game.AddEnemy(Resources.EnemyTank, 4, 4);
+            game.AddEnemy(typeof(Tank), Resources.EnemyTank, 4, 4,GameDirection.Left);
+            game.AddEnemy(typeof(Cannon), Resources.cannon, 14, 8,GameDirection.Down);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {

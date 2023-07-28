@@ -9,7 +9,7 @@ namespace TheLastDefenderGame.GL
 {
     public class Player : Combatant
     {
-        public Player(Image image, GameCell cell):base(GameObjectType.PLAYER,image,cell)
+        public Player(Image image, GameCell cell,GameDirection direction):base(GameObjectType.PLAYER,image,cell,direction)
         {
 
         }

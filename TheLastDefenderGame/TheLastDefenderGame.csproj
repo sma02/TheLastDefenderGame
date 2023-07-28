@@ -53,6 +53,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GL\Bullet.cs" />
+    <Compile Include="GL\Cannon.cs" />
     <Compile Include="GL\Tank.cs" />
     <Compile Include="GL\Combatant.cs" />
     <Compile Include="GL\Enemy.cs" />

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace TheLastDefenderGame.GL
 {
-    class StaticEnemy : Enemy
+    abstract class StaticEnemy : Enemy
     {
-        public StaticEnemy(Image image, GameCell cell) : base(image, cell)
+        public StaticEnemy(Image image, GameCell cell,GameDirection direction) : base(image, cell,direction)
         {
         }
     }

@@ -13,14 +13,14 @@ namespace TheLastDefenderGame.GL
         private Form form;
         private Player player;
         private GameGrid grid;
-        private List<MovableEnemy> enemies;
+        private List<Enemy> enemies;
         public Player Player { get => player; }
         public Game(Form form)
         {
             this.form = form;
-            grid = new GameGrid("maze.txt", 24,40);
+            grid = new GameGrid("maze.txt", 24, 40);
             player = null;
-            enemies = new List<MovableEnemy>();
+            enemies = new List<Enemy>();
             PrintMaze(grid);
         }
         public void PrintMaze(GameGrid grid)
@@ -35,7 +35,7 @@ namespace TheLastDefenderGame.GL
         }
         public void RenderEnemiesBullets()
         {
-            foreach(MovableEnemy enemy in enemies)
+            foreach (Enemy enemy in enemies)
             {
                 enemy.MoveBullets();
             }
@@ -43,18 +43,31 @@ namespace TheLastDefenderGame.GL
         public void AddPlayer(int x, int y, Image image)
         {
             GameCell cell = grid.GetCell(x, y);
-            player = new Player(image, cell);
+            player = new Player(image, cell,GameDirection.Left);
         }
-        public void AddEnemy(Image image,int x,int y)
+        public void AddEnemy(Type type, Image image, int x, int y, GameDirection direction)
         {
-            MovableEnemy enemy = new Tank(image, grid.GetCell(x, y), player);
+            Enemy enemy;
+            GameCell cell = grid.GetCell(x, y);
+            if (type == typeof(Tank))
+            {
+                enemy = new Tank(image, cell, player,direction);
+            }
+            else if (type == typeof(Cannon))
+            {
+                enemy = new Cannon(image, cell, direction);
+            }
+            else
+            {
+                enemy = null;
+            }
             enemies.Add(enemy);
         }
         public void RenderEnemeies()
         {
-            foreach (MovableEnemy enemy in enemies)
+            foreach (Enemy enemy in enemies)
             {
-                enemy.Move();
+                enemy.Render();
                 enemy.Fire();
             }
 
@@ -77,7 +90,7 @@ namespace TheLastDefenderGame.GL
             {
                 player.Move(GameDirection.Right);
             }
-            if(KeyBoard.IsKeyPressed(Key.Space))
+            if (KeyBoard.IsKeyPressed(Key.Space))
             {
                 player.Fire();
             }

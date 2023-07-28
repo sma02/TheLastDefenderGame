@@ -4,13 +4,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheLastDefenderGame.Properties;
 
 namespace TheLastDefenderGame.GL
 {
     public class Bullet : RotateableGameObject
     {
         GameDirection direction;
-        public Bullet(GameCell cell,GameDirection direction):base(GameObjectType.BULLET,'.')
+        public Bullet(GameCell cell, GameDirection direction) : base(cell, GameObjectType.BULLET,'.')
         {
             this.direction = direction;
             CurrentCell = cell;
@@ -30,6 +31,7 @@ namespace TheLastDefenderGame.GL
                 GameCell currentCell = CurrentCell;
                 currentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
                 CurrentCell = nextCell;
+                SetImageOrientation(direction);
                 return true;
             }
         }

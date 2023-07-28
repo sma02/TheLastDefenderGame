@@ -11,9 +11,9 @@ namespace TheLastDefenderGame.GL
     {
         protected List<Bullet> bullets;
         protected GameDirection direction;
-        public Combatant(GameObjectType type,Image image, GameCell cell) : base(type, image)
+        public Combatant(GameObjectType type,Image image, GameCell cell,GameDirection direction) : base(cell,type, image)
         {
-            CurrentCell = cell;
+            this.direction = direction;
             bullets = new List<Bullet>();
         }
         public void MoveBullets()
