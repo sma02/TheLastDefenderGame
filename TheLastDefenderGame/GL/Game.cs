@@ -16,7 +16,7 @@ namespace TheLastDefenderGame.GL
         public Game(Form form)
         {
             this.form = form;
-            grid = new GameGrid("maze.txt", 10, 10);
+            grid = new GameGrid("maze.txt", 24,40);
             player = null;
             PrintMaze(grid);
         }
