@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace TheLastDefenderGame.GL
 {
-    class Tank : Enemy
+    class Tank : MovableEnemy
     {
         private int cooldownCount;
         private const int cooldown = 10;
-        public Tank(Image image, GameCell cell, Player player) : base(image, cell, player)
+        private Player player;
+        public Tank(Image image, GameCell cell, Player player) : base(image, cell)
         {
             this.image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            this.player = player;
             direction = GameDirection.Up;
         }
 
@@ -65,9 +67,9 @@ namespace TheLastDefenderGame.GL
                 {
                     nextCell = CurrentCell.NextCell(direction);
                 }
-                else if(distanceX<1.2f)
+                else if (distanceX < 1.2f)
                 {
-                    if(direction==GameDirection.Left)
+                    if (direction == GameDirection.Left)
                     {
                         direction = GameDirection.Right;
                     }

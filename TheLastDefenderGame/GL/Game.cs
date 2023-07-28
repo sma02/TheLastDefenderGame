@@ -13,14 +13,14 @@ namespace TheLastDefenderGame.GL
         private Form form;
         private Player player;
         private GameGrid grid;
-        private List<Enemy> enemies;
+        private List<MovableEnemy> enemies;
         public Player Player { get => player; }
         public Game(Form form)
         {
             this.form = form;
             grid = new GameGrid("maze.txt", 24,40);
             player = null;
-            enemies = new List<Enemy>();
+            enemies = new List<MovableEnemy>();
             PrintMaze(grid);
         }
         public void PrintMaze(GameGrid grid)
@@ -35,7 +35,7 @@ namespace TheLastDefenderGame.GL
         }
         public void RenderEnemiesBullets()
         {
-            foreach(Enemy enemy in enemies)
+            foreach(MovableEnemy enemy in enemies)
             {
                 enemy.MoveBullets();
             }
@@ -47,12 +47,12 @@ namespace TheLastDefenderGame.GL
         }
         public void AddEnemy(Image image,int x,int y)
         {
-            Enemy enemy = new Tank(image, grid.GetCell(x, y), player);
+            MovableEnemy enemy = new Tank(image, grid.GetCell(x, y), player);
             enemies.Add(enemy);
         }
         public void RenderEnemeies()
         {
-            foreach (Enemy enemy in enemies)
+            foreach (MovableEnemy enemy in enemies)
             {
                 enemy.Move();
                 enemy.Fire();

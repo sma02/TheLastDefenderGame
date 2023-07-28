@@ -32,7 +32,7 @@ namespace TheLastDefenderGame.GL
         }
         public override void Fire()
         {
-            Bullet bullet = new Bullet(CurrentCell.NextCell(direction), direction, bullets);
+            Bullet bullet = new Bullet(CurrentCell.NextCell(direction), direction);
             bullets.Add(bullet);
         }
     }
