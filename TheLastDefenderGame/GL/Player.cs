@@ -9,23 +9,48 @@ namespace TheLastDefenderGame.GL
 {
     public class Player : GameObject
     {
-        public Player(Image image,GameCell cell):base(GameObjectType.PLAYER,image)
+        private GameDirection playerFace;
+        private Image image;
+        public Player(Image image, GameCell cell) : base(GameObjectType.PLAYER, image)
         {
             CurrentCell = cell;
+            this.image = image;
+            playerFace = GameDirection.Up;
         }
         public void Move(GameDirection direction)
         {
             GameCell currentCell = CurrentCell;
+            currentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
             CurrentCell = NextCell(direction);
-            if (currentCell != CurrentCell)
+            SetImageOrientation(direction);
+        }
+        private void SetImageOrientation(GameDirection direction)
+        {
+            CurrentCell.PictureBox.Image = (Image)image.Clone();
+            RotateFlipType rotateFlipType;
+            if (direction == GameDirection.Up)
             {
-                currentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
+                rotateFlipType = RotateFlipType.Rotate270FlipNone;
             }
+            else if (direction == GameDirection.Down)
+            {
+                rotateFlipType = RotateFlipType.Rotate90FlipNone;
+            }
+            else if (direction == GameDirection.Left)
+            {
+                rotateFlipType = RotateFlipType.Rotate180FlipNone;
+            }
+            else
+            {
+                rotateFlipType = RotateFlipType.RotateNoneFlipNone;
+            }
+            CurrentCell.PictureBox.Image.RotateFlip(rotateFlipType);
+
         }
         private GameCell NextCell(GameDirection direction)
         {
             GameCell nextCell = CurrentCell.NextCell(direction);
-            if(nextCell.CurrentGameObject.GameObjectType==GameObjectType.WALL)
+            if (nextCell.CurrentGameObject.GameObjectType == GameObjectType.WALL)
             {
                 nextCell = CurrentCell;
             }

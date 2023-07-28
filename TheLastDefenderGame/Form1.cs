@@ -20,7 +20,7 @@ namespace TheLastDefenderGame
             InitializeComponent();
             game = new Game(this);
             Image playerImage = Resources.Tank;
-            playerImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            playerImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
             game.AddPlayer(2, 2, playerImage);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
