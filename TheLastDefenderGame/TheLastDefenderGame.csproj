@@ -53,6 +53,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GL\Bullet.cs" />
+    <Compile Include="GL\Combatant.cs" />
+    <Compile Include="GL\Enemy.cs" />
     <Compile Include="GL\Game.cs" />
     <Compile Include="GL\GameCell.cs" />
     <Compile Include="GL\GameDirection.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="GL\GameObject.cs" />
     <Compile Include="GL\GameObjectType.cs" />
     <Compile Include="GL\Player.cs" />
+    <Compile Include="GL\Tank.cs" />
     <Compile Include="KeyBoard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +103,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Exhaust_Fire.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EnemyTank.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -22,6 +22,7 @@ namespace TheLastDefenderGame
             Image playerImage = Resources.Tank;
             playerImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
             game.AddPlayer(2, 2, playerImage);
+            game.AddEnemy(Resources.EnemyTank, 4, 4);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -32,6 +33,8 @@ namespace TheLastDefenderGame
         {
             game.PlayerControls();
             game.Player.MoveBullets();
+            game.RenderEnemeies();
+            game.RenderEnemiesBullets();
         }
     }
 }

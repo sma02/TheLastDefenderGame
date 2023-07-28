@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TheLastDefenderGame.GL
 {
-    class Bullet : GameObject
+    public class Bullet : GameObject
     {
         GameDirection direction;
         List<Bullet> bullets;

@@ -83,6 +83,16 @@ namespace TheLastDefenderGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EnemyTank {
+            get {
+                object obj = ResourceManager.GetObject("EnemyTank", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Exhaust_Fire {
             get {
                 object obj = ResourceManager.GetObject("Exhaust_Fire", resourceCulture);
