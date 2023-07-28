@@ -9,13 +9,18 @@ namespace TheLastDefenderGame.GL
 {
     public class Fireable : RotateableGameObject
     {
-        GameDirection direction;
-        public Fireable(GameCell cell, GameDirection direction, Image image, RotateFlipType initialRotate) : base(cell, GameObjectType.FIREABLE, image, initialRotate)
+        private GameDirection direction;
+        private Combatant owningCombatant;
+        public Combatant OwningCombatant { get => owningCombatant; set => owningCombatant = value; }
+        public Fireable(GameCell cell,Combatant owningCombatant, GameDirection direction, Image image, RotateFlipType initialRotate) : base(cell, GameObjectType.FIREABLE, image, initialRotate)
         {
             this.direction = direction;
+            this.owningCombatant = owningCombatant;
             CurrentCell = cell;
             SetImageOrientation(direction);
         }
+
+
         public bool Move()
         {
             GameCell nextCell = CurrentCell.NextCell(direction);

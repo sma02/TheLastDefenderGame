@@ -9,9 +9,12 @@ namespace TheLastDefenderGame.GL
 {
     public class Player : Combatant
     {
+        private int health;
+        public int Health { get => health; set => health = value; }
+
         public Player(Image image, GameCell cell, GameDirection direction) : base(GameObjectType.PLAYER, image, cell, direction, RotateFlipType.RotateNoneFlipNone)
         {
-
+            health = 100;
         }
         public void Move(GameDirection direction)
         {
@@ -32,8 +35,8 @@ namespace TheLastDefenderGame.GL
         }
         public override void Fire()
         {
-            Bullet bullet = new Bullet(CurrentCell.NextCell(direction), direction);
-            fireable.Add(bullet);
+            Bullet bullet = new Bullet(CurrentCell.NextCell(direction), this, direction);
+            fireables.Add(bullet);
         }
     }
 }

@@ -31,6 +31,7 @@ namespace TheLastDefenderGame
         {
             this.components = new System.ComponentModel.Container();
             this.timerGame = new System.Windows.Forms.Timer(this.components);
+            this.labelScore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timerGame
@@ -38,22 +39,37 @@ namespace TheLastDefenderGame
             this.timerGame.Enabled = true;
             this.timerGame.Tick += new System.EventHandler(this.timerGame_Tick);
             // 
+            // labelScore
+            // 
+            this.labelScore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelScore.AutoSize = true;
+            this.labelScore.BackColor = System.Drawing.Color.Transparent;
+            this.labelScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelScore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelScore.Location = new System.Drawing.Point(737, 9);
+            this.labelScore.Name = "labelScore";
+            this.labelScore.Size = new System.Drawing.Size(0, 20);
+            this.labelScore.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::TheLastDefenderGame.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelScore);
             this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Timer timerGame;
+        private System.Windows.Forms.Label labelScore;
     }
 }
 

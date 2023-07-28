@@ -9,23 +9,31 @@ namespace TheLastDefenderGame.GL
 {
     public abstract class Combatant : RotateableGameObject
     {
-        protected List<Fireable> fireable;
+        protected List<Fireable> fireables;
         protected GameDirection direction;
+
+        public List<Fireable> Fireables { get => fireables; }
+
         public Combatant(GameObjectType type, Image image, GameCell cell, GameDirection direction, RotateFlipType initialRotate) : base(cell, type, image, initialRotate)
         {
             this.direction = direction;
-            fireable = new List<Fireable>();
+            fireables = new List<Fireable>();
         }
         public void MoveFireables()
         {
-            for (int i = 0; i < fireable.Count; i++)
+            for (int i = 0; i < fireables.Count; i++)
             {
-                if (!fireable[i].Move())
+                if (!fireables[i].Move())
                 {
-                    fireable.RemoveAt(i);
+                    fireables.RemoveAt(i);
                     i = i - 1;
                 }
             }
+        }
+        public void RemoveFireable(Fireable fireable)
+        {
+            fireable.CurrentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
+            fireables.Remove(fireable);
         }
         public abstract void Fire();
     }

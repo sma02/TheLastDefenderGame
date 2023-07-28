@@ -14,13 +14,19 @@ namespace TheLastDefenderGame.GL
         private Player player;
         private GameGrid grid;
         private List<Enemy> enemies;
+        private List<Fireable> freeFireables;
+        private int score;
+        public int Score { get => score; set => score += value; }
         public Player Player { get => player; }
+        public List<Enemy> Enemies { get => enemies; }
         public Game(Form form)
         {
             this.form = form;
             grid = new GameGrid("maze.txt", 24, 40);
             player = null;
             enemies = new List<Enemy>();
+            freeFireables = new List<Fireable>();
+            score = 0;
             PrintMaze(grid);
         }
         public void PrintMaze(GameGrid grid)
@@ -45,6 +51,11 @@ namespace TheLastDefenderGame.GL
             GameCell cell = grid.GetCell(x, y);
             player = new Player(image, cell,GameDirection.Left);
         }
+        public void RemovePlayer()
+        {
+            player.CurrentCell.CurrentGameObject = new GameObject(GameObjectType.NONE,' ');
+            player = null;
+        }
         public void AddEnemy(Type type, Image image, int x, int y, GameDirection direction)
         {
             Enemy enemy;
@@ -63,6 +74,16 @@ namespace TheLastDefenderGame.GL
             }
             enemies.Add(enemy);
         }
+        public void RemoveEnemy(Enemy enemy)
+        {
+            foreach(Fireable fireable in enemy.Fireables)
+            {
+                freeFireables.Add(fireable);
+            }
+            enemy.Fireables.Clear();
+            enemy.CurrentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
+            enemies.Remove(enemy);
+        }
         public void RenderEnemeies()
         {
             foreach (Enemy enemy in enemies)
@@ -70,7 +91,18 @@ namespace TheLastDefenderGame.GL
                 enemy.Render();
                 enemy.Fire();
             }
-
+            MoveFreeFireables();
+        }
+        private void MoveFreeFireables()
+        {
+            for (int i = 0; i < freeFireables.Count; i++)
+            {
+                if (!freeFireables[i].Move())
+                {
+                    freeFireables.RemoveAt(i);
+                    i = i - 1;
+                }
+            }
         }
         public void PlayerControls()
         {

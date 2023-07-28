@@ -10,7 +10,7 @@ namespace TheLastDefenderGame.GL
 {
     public class Bullet : Fireable
     {
-        public Bullet(GameCell cell, GameDirection direction) : base(cell, direction,Resources.Exhaust_Fire,RotateFlipType.Rotate90FlipNone)
+        public Bullet(GameCell cell, Combatant owningCombatant, GameDirection direction) : base(cell, owningCombatant, direction, Resources.Exhaust_Fire, RotateFlipType.Rotate90FlipNone)
         {
         }
     }
