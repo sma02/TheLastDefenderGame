@@ -23,6 +23,14 @@ namespace TheLastDefenderGame
             playerImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
             game.AddPlayer(2, 2, playerImage);
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            return true;
+        }
 
+        private void timerGame_Tick(object sender, EventArgs e)
+        {
+            game.PlayerMovements();
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace TheLastDefenderGame.GL
         {
             this.form = form;
             grid = new GameGrid("maze.txt", 10, 10);
+            player = null;
             PrintMaze(grid);
         }
         public void PrintMaze(GameGrid grid)
@@ -29,10 +30,29 @@ namespace TheLastDefenderGame.GL
                 }
             }
         }
-        public void AddPlayer(int x,int y,Image image)
+        public void AddPlayer(int x, int y, Image image)
         {
             GameCell cell = grid.GetCell(x, y);
             player = new Player(image, cell);
+        }
+        public void PlayerMovements()
+        {
+            if (KeyBoard.IsKeyPressed(Key.UpArrow))
+            {
+                player.Move(GameDirection.Up);
+            }
+            else if (KeyBoard.IsKeyPressed(Key.DownArrow))
+            {
+                player.Move(GameDirection.Down);
+            }
+            if (KeyBoard.IsKeyPressed(Key.LeftArrow))
+            {
+                player.Move(GameDirection.Left);
+            }
+            else if (KeyBoard.IsKeyPressed(Key.RightArrow))
+            {
+                player.Move(GameDirection.Right);
+            }
         }
     }
 }

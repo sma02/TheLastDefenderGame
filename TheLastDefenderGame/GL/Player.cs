@@ -15,7 +15,12 @@ namespace TheLastDefenderGame.GL
         }
         public void Move(GameDirection direction)
         {
+            GameCell currentCell = CurrentCell;
             CurrentCell = NextCell(direction);
+            if (currentCell != CurrentCell)
+            {
+                currentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
+            }
         }
         private GameCell NextCell(GameDirection direction)
         {
