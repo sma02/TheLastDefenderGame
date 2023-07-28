@@ -14,25 +14,15 @@ namespace TheLastDefenderGame
 {
     public partial class Form1 : Form
     {
+        Game game;
         public Form1()
         {
             InitializeComponent();
-            GameGrid grid = new GameGrid("maze.txt", 10, 10);
-            PrintMaze(grid);
-            GameCell cell = grid.GetCell(2, 2);
-            Image image = Resources.Tank;
-            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            Player player = new Player(image,cell);
+            game = new Game(this);
+            Image playerImage = Resources.Tank;
+            playerImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            game.AddPlayer(2, 2, playerImage);
         }
-        private void PrintMaze(GameGrid grid)
-        {
-            for(int y=0;y<grid.Rows;y++)
-            {
-                for(int x=0;x<grid.Cols;x++)
-                {
-                    Controls.Add(grid.GetCell(x, y).PictureBox);
-                }
-            }
-        }
+
     }
 }

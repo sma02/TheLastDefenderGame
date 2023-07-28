@@ -29,7 +29,15 @@ namespace TheLastDefenderGame
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.timerGame = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
+            // 
+            // timerGame
+            // 
+            this.timerGame.Enabled = true;
+            this.timerGame.Interval = 1;
             // 
             // Form1
             // 
@@ -45,6 +53,9 @@ namespace TheLastDefenderGame
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer timerGame;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
