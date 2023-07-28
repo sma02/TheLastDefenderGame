@@ -19,6 +19,8 @@ namespace TheLastDefenderGame.GL
         public int Score { get => score; set => score += value; }
         public Player Player { get => player; }
         public List<Enemy> Enemies { get => enemies; }
+        public List<Fireable> FreeFireables { get => freeFireables; }
+
         public Game(Form form)
         {
             this.form = form;
@@ -49,11 +51,11 @@ namespace TheLastDefenderGame.GL
         public void AddPlayer(int x, int y, Image image)
         {
             GameCell cell = grid.GetCell(x, y);
-            player = new Player(image, cell,GameDirection.Left);
+            player = new Player(image, cell, GameDirection.Left);
         }
         public void RemovePlayer()
         {
-            player.CurrentCell.CurrentGameObject = new GameObject(GameObjectType.NONE,' ');
+            player.CurrentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
             player = null;
         }
         public void AddEnemy(Type type, Image image, int x, int y, GameDirection direction)
@@ -62,7 +64,7 @@ namespace TheLastDefenderGame.GL
             GameCell cell = grid.GetCell(x, y);
             if (type == typeof(Tank))
             {
-                enemy = new Tank(image, cell, player,direction);
+                enemy = new Tank(image, cell, player, direction);
             }
             else if (type == typeof(Cannon))
             {
@@ -76,7 +78,7 @@ namespace TheLastDefenderGame.GL
         }
         public void RemoveEnemy(Enemy enemy)
         {
-            foreach(Fireable fireable in enemy.Fireables)
+            foreach (Fireable fireable in enemy.Fireables)
             {
                 freeFireables.Add(fireable);
             }
@@ -93,6 +95,40 @@ namespace TheLastDefenderGame.GL
             }
             MoveFreeFireables();
         }
+        private Enemy GetEnemy(GameCell cell)
+        {
+            return enemies.Find(x => x.CurrentCell.X == cell.X && x.CurrentCell.Y == cell.Y);
+        }
+        public void HandleCollisions(List<Fireable> fireables)
+        {
+            for (int i = 0; i < fireables.Count; i++)
+            {
+                GameCell cell = fireables[i].CurrentCell.NextCell(fireables[i].FiringDirection);
+                GameObject collidingObject = cell.CurrentGameObject;
+                if (collidingObject.GameObjectType == GameObjectType.PLAYER)
+                {
+                    if (fireables[i].GetType() == typeof(Bullet))
+                    {
+                        Player.Health -= 5;
+                    }
+                    else if (fireables[i].GetType() == typeof(CannonBall))
+                    {
+                        Player.Health -= 10;
+                    }
+                }
+                else
+                {
+                    Score = 5;
+                    Enemy enemy = GetEnemy(cell);
+                    enemy.Health -= 30;
+                    if (enemy.Health <= 0)
+                    {
+                        RemoveEnemy(enemy);
+                    }
+                }
+                fireables[i].OwningCombatant.RemoveFireable(fireables[i]);
+            }
+        }
         private void MoveFreeFireables()
         {
             for (int i = 0; i < freeFireables.Count; i++)
@@ -100,7 +136,6 @@ namespace TheLastDefenderGame.GL
                 if (!freeFireables[i].Move())
                 {
                     freeFireables.RemoveAt(i);
-                    i = i - 1;
                 }
             }
         }

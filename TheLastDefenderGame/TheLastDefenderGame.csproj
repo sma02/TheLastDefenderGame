@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="GL\Bullet.cs" />
     <Compile Include="GL\Cannon.cs" />
+    <Compile Include="GL\CannonBall.cs" />
     <Compile Include="GL\Fireable.cs" />
     <Compile Include="GL\GameCollider.cs" />
     <Compile Include="GL\Tank.cs" />

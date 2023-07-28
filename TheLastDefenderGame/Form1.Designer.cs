@@ -32,6 +32,7 @@ namespace TheLastDefenderGame
             this.components = new System.ComponentModel.Container();
             this.timerGame = new System.Windows.Forms.Timer(this.components);
             this.labelScore = new System.Windows.Forms.Label();
+            this.labelHealth = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timerGame
@@ -51,12 +52,24 @@ namespace TheLastDefenderGame
             this.labelScore.Size = new System.Drawing.Size(0, 20);
             this.labelScore.TabIndex = 0;
             // 
+            // labelHealth
+            // 
+            this.labelHealth.AutoSize = true;
+            this.labelHealth.BackColor = System.Drawing.Color.Transparent;
+            this.labelHealth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHealth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelHealth.Location = new System.Drawing.Point(12, 9);
+            this.labelHealth.Name = "labelHealth";
+            this.labelHealth.Size = new System.Drawing.Size(0, 20);
+            this.labelHealth.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::TheLastDefenderGame.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelHealth);
             this.Controls.Add(this.labelScore);
             this.DoubleBuffered = true;
             this.Name = "Form1";
@@ -70,6 +83,7 @@ namespace TheLastDefenderGame
 
         private System.Windows.Forms.Timer timerGame;
         private System.Windows.Forms.Label labelScore;
+        private System.Windows.Forms.Label labelHealth;
     }
 }
 

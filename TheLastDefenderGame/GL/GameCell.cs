@@ -79,7 +79,7 @@ namespace TheLastDefenderGame.GL
                     break;
             }
             GameObjectType objectType = cell.CurrentGameObject.GameObjectType;
-            if (cell == null || objectType == GameObjectType.WALL|| objectType == GameObjectType.ENEMY|| objectType == GameObjectType.PLAYER)
+            if (cell == null || objectType == GameObjectType.WALL)
             {
                 return this;
             }

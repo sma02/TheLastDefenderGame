@@ -22,5 +22,10 @@ namespace TheLastDefenderGame.GL
         {
             throw new NotImplementedException();
         }
+
+        protected override Fireable AddFire()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

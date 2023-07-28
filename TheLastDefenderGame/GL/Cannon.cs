@@ -25,5 +25,10 @@ namespace TheLastDefenderGame.GL
                 cooldownCount = 0;
             }
         }
+
+        protected override Fireable AddFire()
+        {
+            return new CannonBall(CurrentCell.NextCell(direction), this, direction);
+        }
     }
 }

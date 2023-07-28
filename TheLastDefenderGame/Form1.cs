@@ -17,6 +17,7 @@ namespace TheLastDefenderGame
         private Game game;
         private GameCollider collider;
         public int Score { set => labelScore.Text = value.ToString(); }
+        public int Health { set => labelHealth.Text = value.ToString(); }
         public Form1()
         {
             InitializeComponent();
@@ -37,16 +38,14 @@ namespace TheLastDefenderGame
         {
             game.RenderEnemeies();
             game.RenderEnemiesBullets();
-            game.Score = collider.FireableCollisionsWithEnemy();
             Score = game.Score;
             if (game.Player?.Health > 0)
             {
+            Health = game.Player.Health;
+            List<Fireable> fireables = collider.CollidingFirables();
+            game.HandleCollisions(fireables);
                 game.PlayerControls();
                 game.Player.MoveFireables();
-                if (collider.CollisionWithPlayer())
-                {
-                    game.Player.Health -= 20;
-                }
             }
             else if (game.Player != null)
             {

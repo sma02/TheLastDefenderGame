@@ -10,11 +10,8 @@ namespace TheLastDefenderGame.GL
     abstract class Enemy : Combatant
     {
         protected bool isFiringState;
-        private int health;
-        public int Health { get => health; set => health = value; }
         public Enemy(Image image, GameCell cell, GameDirection direction, RotateFlipType initialRotate) : base(GameObjectType.ENEMY, image, cell, direction, initialRotate)
         {
-            health = 100;
             isFiringState = false;
         }
         public abstract void Render();
@@ -22,9 +19,10 @@ namespace TheLastDefenderGame.GL
         {
             if (isFiringState)
             {
-                Fireable fireable = new Bullet(CurrentCell.NextCell(direction), this, direction);
+                Fireable fireable = AddFire();
                 base.fireables.Add(fireable);
             }
         }
+        protected abstract Fireable AddFire();
     }
 }

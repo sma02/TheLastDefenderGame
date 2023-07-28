@@ -30,6 +30,28 @@ namespace TheLastDefenderGame.GL
             }
             return false;
         }
+        public List<Fireable> CollidingFirables()
+        {
+            List<Fireable> fireables = new List<Fireable>();
+            AddCollidingFirables(fireables, game.Player.Fireables);
+            foreach (Enemy enemy in game.Enemies)
+            {
+                AddCollidingFirables(fireables, enemy.Fireables);
+            }
+            AddCollidingFirables(fireables, game.FreeFireables);
+            return fireables;
+        }
+        private void AddCollidingFirables(List<Fireable> fireables, List<Fireable> combatantFirables)
+        {
+            foreach (Fireable fireable in combatantFirables)
+            {
+                GameObject gameObject = fireable.CurrentCell.NextCell(fireable.FiringDirection).CurrentGameObject;
+                if (gameObject.GameObjectType == GameObjectType.PLAYER || gameObject.GameObjectType == GameObjectType.ENEMY)
+                {
+                    fireables.Add(fireable);
+                }
+            }
+        }
         public int FireableCollisionsWithEnemy()
         {
             int score = 0;
@@ -55,7 +77,7 @@ namespace TheLastDefenderGame.GL
                         Fireable fireable = (Fireable)nextCell.CurrentGameObject;
                         fireable.OwningCombatant.RemoveFireable(fireable);
                         enemy.Health -= 30;
-                        if(enemy.Health<=0)
+                        if (enemy.Health <= 0)
                         {
                             game.RemoveEnemy(enemy);
                         }

@@ -86,5 +86,10 @@ namespace TheLastDefenderGame.GL
             }
             return nextCell;
         }
+
+        protected override Fireable AddFire()
+        {
+            return new Bullet(CurrentCell.NextCell(direction), this, direction);
+        }
     }
 }

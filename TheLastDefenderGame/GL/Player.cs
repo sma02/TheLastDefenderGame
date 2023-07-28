@@ -9,12 +9,9 @@ namespace TheLastDefenderGame.GL
 {
     public class Player : Combatant
     {
-        private int health;
-        public int Health { get => health; set => health = value; }
 
         public Player(Image image, GameCell cell, GameDirection direction) : base(GameObjectType.PLAYER, image, cell, direction, RotateFlipType.RotateNoneFlipNone)
         {
-            health = 100;
         }
         public void Move(GameDirection direction)
         {

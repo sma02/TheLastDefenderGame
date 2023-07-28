@@ -12,6 +12,8 @@ namespace TheLastDefenderGame.GL
         private GameDirection direction;
         private Combatant owningCombatant;
         public Combatant OwningCombatant { get => owningCombatant; set => owningCombatant = value; }
+        public GameDirection FiringDirection { get => direction; }
+
         public Fireable(GameCell cell,Combatant owningCombatant, GameDirection direction, Image image, RotateFlipType initialRotate) : base(cell, GameObjectType.FIREABLE, image, initialRotate)
         {
             this.direction = direction;
