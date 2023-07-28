@@ -57,7 +57,7 @@ namespace TheLastDefenderGame.GL
             {
                 case 'P': return GameObjectType.PLAYER;
                 case '#': return GameObjectType.WALL;
-                case '.': return GameObjectType.BULLET;
+                case '.': return GameObjectType.FIREABLE;
                 default: return GameObjectType.NONE;
             }
         }

@@ -12,9 +12,8 @@ namespace TheLastDefenderGame.GL
         private int cooldownCount;
         private const int cooldown = 10;
         private Player player;
-        public Tank(Image image, GameCell cell, Player player, GameDirection direction) : base(image, cell, direction)
+        public Tank(Image image, GameCell cell, Player player, GameDirection direction) : base(image, cell, direction,RotateFlipType.Rotate90FlipNone)
         {
-            this.image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             this.player = player;
         }
 

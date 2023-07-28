@@ -37,7 +37,7 @@ namespace TheLastDefenderGame.GL
         {
             foreach (Enemy enemy in enemies)
             {
-                enemy.MoveBullets();
+                enemy.MoveFireables();
             }
         }
         public void AddPlayer(int x, int y, Image image)

@@ -11,7 +11,7 @@ namespace TheLastDefenderGame.GL
     {
         const int cooldown = 10;
         int cooldownCount = 0;
-        public Cannon(Image image, GameCell cell,GameDirection direction) : base(image, cell,direction)
+        public Cannon(Image image, GameCell cell, GameDirection direction) : base(image, cell, direction, RotateFlipType.RotateNoneFlipNone)
         {
             SetImageOrientation(direction);
         }
@@ -19,7 +19,7 @@ namespace TheLastDefenderGame.GL
         {
             isFiringState = false;
             cooldownCount++;
-            if(cooldownCount>=cooldown)
+            if (cooldownCount >= cooldown)
             {
                 isFiringState = true;
                 cooldownCount = 0;

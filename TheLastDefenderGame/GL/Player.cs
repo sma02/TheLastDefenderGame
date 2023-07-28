@@ -9,7 +9,7 @@ namespace TheLastDefenderGame.GL
 {
     public class Player : Combatant
     {
-        public Player(Image image, GameCell cell,GameDirection direction):base(GameObjectType.PLAYER,image,cell,direction)
+        public Player(Image image, GameCell cell, GameDirection direction) : base(GameObjectType.PLAYER, image, cell, direction, RotateFlipType.RotateNoneFlipNone)
         {
 
         }
@@ -33,7 +33,7 @@ namespace TheLastDefenderGame.GL
         public override void Fire()
         {
             Bullet bullet = new Bullet(CurrentCell.NextCell(direction), direction);
-            bullets.Add(bullet);
+            fireable.Add(bullet);
         }
     }
 }

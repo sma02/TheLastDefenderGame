@@ -9,7 +9,7 @@ namespace TheLastDefenderGame.GL
 {
     class Plane : MovableEnemy
     {
-        public Plane(Image image, GameCell cell,GameDirection direction) : base(image, cell,direction)
+        public Plane(Image image, GameCell cell, GameDirection direction) : base(image, cell, direction, RotateFlipType.RotateNoneFlipNone)
         {
         }
 

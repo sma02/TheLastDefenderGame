@@ -11,7 +11,7 @@ namespace TheLastDefenderGame.GL
         WALL,
         PLAYER,
         ENEMY,
-        BULLET,
+        FIREABLE,
         NONE
     }
 }

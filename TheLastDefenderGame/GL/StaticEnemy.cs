@@ -9,7 +9,7 @@ namespace TheLastDefenderGame.GL
 {
     abstract class StaticEnemy : Enemy
     {
-        public StaticEnemy(Image image, GameCell cell,GameDirection direction) : base(image, cell,direction)
+        public StaticEnemy(Image image, GameCell cell, GameDirection direction, RotateFlipType initialRotate) : base(image, cell, direction, initialRotate)
         {
         }
     }

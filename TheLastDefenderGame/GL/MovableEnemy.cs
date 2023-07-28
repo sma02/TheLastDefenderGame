@@ -9,7 +9,7 @@ namespace TheLastDefenderGame.GL
 {
     abstract class MovableEnemy : Enemy
     {
-        public MovableEnemy(Image image, GameCell cell, GameDirection direction) : base(image, cell, direction)
+        public MovableEnemy(Image image, GameCell cell, GameDirection direction, RotateFlipType initialRotate) : base(image, cell, direction, initialRotate)
         {
         }
         public override void Render()
