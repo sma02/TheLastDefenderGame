@@ -57,6 +57,8 @@
     <Compile Include="GL\GameGrid.cs" />
     <Compile Include="GL\GameObject.cs" />
     <Compile Include="GL\GameObjectType.cs" />
+    <Compile Include="GL\Player.cs" />
+    <Compile Include="KeyBoard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -90,6 +92,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Brickwall4_Texture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PngItem_461543.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TheLastDefenderGame.GL;
+using TheLastDefenderGame.Properties;
 
 namespace TheLastDefenderGame
 {
@@ -18,6 +19,10 @@ namespace TheLastDefenderGame
             InitializeComponent();
             GameGrid grid = new GameGrid("maze.txt", 10, 10);
             PrintMaze(grid);
+            GameCell cell = grid.GetCell(2, 2);
+            Image image = Resources.Tank;
+            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            Player player = new Player(image,cell);
         }
         private void PrintMaze(GameGrid grid)
         {

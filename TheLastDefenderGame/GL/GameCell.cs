@@ -35,8 +35,8 @@ namespace TheLastDefenderGame.GL
             _x = x;
             _y = y;
             _gameGrid = gameGrid;
-            const int width = 5 * 3;
-            const int height = 5 * 3;
+            const int width = 10 * 3;
+            const int height = 10 * 3;
             _pictureBox = new PictureBox();
             _pictureBox.Left = x * width;
             _pictureBox.Top = y * height;
