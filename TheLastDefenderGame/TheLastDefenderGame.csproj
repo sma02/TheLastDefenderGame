@@ -52,6 +52,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GL\Bullet.cs" />
     <Compile Include="GL\Game.cs" />
     <Compile Include="GL\GameCell.cs" />
     <Compile Include="GL\GameDirection.cs" />
@@ -96,6 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PngItem_461543.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exhaust_Fire.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

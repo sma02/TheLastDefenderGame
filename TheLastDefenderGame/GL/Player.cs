@@ -9,13 +9,14 @@ namespace TheLastDefenderGame.GL
 {
     public class Player : GameObject
     {
-        private GameDirection playerFace;
+        private List<Bullet> bullets;
         private Image image;
+        private GameDirection direction;
         public Player(Image image, GameCell cell) : base(GameObjectType.PLAYER, image)
         {
             CurrentCell = cell;
             this.image = image;
-            playerFace = GameDirection.Up;
+            bullets = new List<Bullet>();
         }
         public void Move(GameDirection direction)
         {
@@ -23,6 +24,17 @@ namespace TheLastDefenderGame.GL
             currentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
             CurrentCell = NextCell(direction);
             SetImageOrientation(direction);
+        }
+        public void MoveBullets()
+        {
+            for (int i = 0; i < bullets.Count; i++)
+            {
+                if (!bullets[i].Move())
+                {
+                    bullets.RemoveAt(i);
+                    i = i - 1;
+                }
+            }
         }
         private void SetImageOrientation(GameDirection direction)
         {
@@ -54,7 +66,13 @@ namespace TheLastDefenderGame.GL
             {
                 nextCell = CurrentCell;
             }
+            this.direction = direction;
             return nextCell;
+        }
+        public void Fire()
+        {
+            Bullet bullet = new Bullet(CurrentCell.NextCell(direction), direction, bullets);
+            bullets.Add(bullet);
         }
     }
 }

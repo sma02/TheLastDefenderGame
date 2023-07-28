@@ -30,7 +30,8 @@ namespace TheLastDefenderGame
 
         private void timerGame_Tick(object sender, EventArgs e)
         {
-            game.PlayerMovements();
+            game.PlayerControls();
+            game.Player.MoveBullets();
         }
     }
 }

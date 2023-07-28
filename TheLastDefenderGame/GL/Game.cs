@@ -10,9 +10,10 @@ namespace TheLastDefenderGame.GL
 {
     class Game
     {
-        Form form;
-        Player player;
-        GameGrid grid;
+        private Form form;
+        private Player player;
+        private GameGrid grid;
+        public Player Player { get => player; }
         public Game(Form form)
         {
             this.form = form;
@@ -35,7 +36,7 @@ namespace TheLastDefenderGame.GL
             GameCell cell = grid.GetCell(x, y);
             player = new Player(image, cell);
         }
-        public void PlayerMovements()
+        public void PlayerControls()
         {
             if (KeyBoard.IsKeyPressed(Key.UpArrow))
             {
@@ -52,6 +53,10 @@ namespace TheLastDefenderGame.GL
             else if (KeyBoard.IsKeyPressed(Key.RightArrow))
             {
                 player.Move(GameDirection.Right);
+            }
+            if(KeyBoard.IsKeyPressed(Key.Space))
+            {
+                player.Fire();
             }
         }
     }

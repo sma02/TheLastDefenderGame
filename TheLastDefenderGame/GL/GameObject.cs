@@ -32,6 +32,9 @@ namespace TheLastDefenderGame.GL
                 case '#':
                     DisplayImage = Resources.Brickwall;
                     break;
+                case '.':
+                    DisplayImage = Resources.Exhaust_Fire;
+                    break;
             }
         }
 
@@ -54,6 +57,7 @@ namespace TheLastDefenderGame.GL
             {
                 case 'P': return GameObjectType.PLAYER;
                 case '#': return GameObjectType.WALL;
+                case '.': return GameObjectType.BULLET;
                 default: return GameObjectType.NONE;
             }
         }
