@@ -27,7 +27,7 @@ namespace TheLastDefenderGame
             playerImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
             game.AddPlayer(2, 2, playerImage);
             game.AddEnemy(typeof(Tank), Resources.EnemyTank, 30, 20, GameDirection.Left);
-            game.AddEnemy(typeof(Interceptor), Resources.RL, 20,10, GameDirection.Left);
+            game.AddEnemy(typeof(Interceptor), Resources.RL, 20, 10, GameDirection.Left);
             game.AddEnemy(typeof(Cannon), Resources.cannon, 14, 8, GameDirection.Down);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -40,11 +40,15 @@ namespace TheLastDefenderGame
             game.RenderEnemeies();
             game.RenderEnemiesBullets();
             Score = game.Score;
+            if (game.Enemies.Count < 3)
+            {
+                game.GenerateRandomEnemy();
+            }
             if (game.Player?.Health > 0)
             {
-            Health = game.Player.Health;
-            List<Fireable> fireables = collider.CollidingFirables();
-            game.HandleCollisions(fireables);
+                Health = game.Player.Health;
+                List<Fireable> fireables = collider.CollidingFirables();
+                game.HandleCollisions(fireables);
                 game.PlayerControls();
                 game.Player.MoveFireables();
             }

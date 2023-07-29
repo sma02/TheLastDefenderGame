@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TheLastDefenderGame.Properties;
 
 namespace TheLastDefenderGame.GL
 {
@@ -98,6 +99,32 @@ namespace TheLastDefenderGame.GL
                 enemy.Fire();
             }
             MoveFreeFireables();
+        }
+        public void GenerateRandomEnemy()
+        {
+            int randomEnemyNumber = (new Random()).Next(0, 3);
+            int randomX;
+            int randomY;
+            int direction;
+            do
+            {
+                randomX = (new Random()).Next(grid.Cols);
+                randomY = (new Random()).Next(grid.Rows);
+            }
+            while (grid.GetCell(randomX, randomY).CurrentGameObject.GameObjectType != GameObjectType.NONE);
+                direction = (new Random()).Next(Enum.GetValues(typeof(GameDirection)).Length);
+            switch (randomEnemyNumber)
+            {
+                case 0:
+                    AddEnemy(typeof(Tank), Resources.EnemyTank, randomX, randomY, (GameDirection)direction);
+                    break;
+                case 1:
+                    AddEnemy(typeof(Cannon), Resources.cannon, randomX, randomY, (GameDirection)direction);
+                    break;
+                case 2:
+                    AddEnemy(typeof(Interceptor), Resources.RL, randomX, randomY, (GameDirection)direction);
+                    break;
+            }
         }
         private Enemy GetEnemy(GameCell cell)
         {
