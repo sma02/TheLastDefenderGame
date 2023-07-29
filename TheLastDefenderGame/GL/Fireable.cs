@@ -11,14 +11,17 @@ namespace TheLastDefenderGame.GL
     {
         private GameDirection direction;
         private Combatant owningCombatant;
+        private int damagePower;
         public Combatant OwningCombatant { get => owningCombatant; set => owningCombatant = value; }
         public GameDirection FiringDirection { get => direction; }
+        public int DamagePower { get => damagePower; set => damagePower = value; }
 
-        public Fireable(GameCell cell,Combatant owningCombatant, GameDirection direction, Image image, RotateFlipType initialRotate) : base(cell, GameObjectType.FIREABLE, image, initialRotate)
+        public Fireable(GameCell cell, Combatant owningCombatant, GameDirection direction, Image image, RotateFlipType initialRotate, int damagePower = 1) : base(cell, GameObjectType.FIREABLE, image, initialRotate)
         {
             this.direction = direction;
             this.owningCombatant = owningCombatant;
             CurrentCell = cell;
+            this.damagePower = damagePower;
             SetImageOrientation(direction);
         }
 

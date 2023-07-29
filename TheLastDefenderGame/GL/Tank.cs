@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheLastDefenderGame.Properties;
 
 namespace TheLastDefenderGame.GL
 {
@@ -12,7 +13,7 @@ namespace TheLastDefenderGame.GL
         private int cooldownCount;
         private const int cooldown = 10;
         private Player player;
-        public Tank(Image image, GameCell cell, Player player, GameDirection direction) : base(image, cell, direction,RotateFlipType.Rotate90FlipNone)
+        public Tank(Image image, GameCell cell, Player player, GameDirection direction) : base(image, cell, direction, RotateFlipType.Rotate90FlipNone, 300)
         {
             this.player = player;
         }
@@ -89,7 +90,7 @@ namespace TheLastDefenderGame.GL
 
         protected override Fireable AddFire()
         {
-            return new Bullet(CurrentCell.NextFirableCell(direction), this, direction);
+            return new Fireable(CurrentCell.NextFirableCell(direction), this, direction, Resources.Exhaust_Fire, RotateFlipType.Rotate90FlipNone, 15);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace TheLastDefenderGame.GL
     abstract class Enemy : Combatant
     {
         protected bool isFiringState;
-        public Enemy(Image image, GameCell cell, GameDirection direction, RotateFlipType initialRotate) : base(GameObjectType.ENEMY, image, cell, direction, initialRotate)
+        public Enemy(Image image, GameCell cell, GameDirection direction, RotateFlipType initialRotate, double strength) : base(GameObjectType.ENEMY, image, cell, direction, initialRotate, strength)
         {
             isFiringState = false;
         }

@@ -4,13 +4,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheLastDefenderGame.Properties;
 
 namespace TheLastDefenderGame.GL
 {
     public class Player : Combatant
     {
 
-        public Player(Image image, GameCell cell, GameDirection direction) : base(GameObjectType.PLAYER, image, cell, direction, RotateFlipType.RotateNoneFlipNone)
+        public Player(Image image, GameCell cell, GameDirection direction) : base(GameObjectType.PLAYER, image, cell, direction, RotateFlipType.RotateNoneFlipNone, 5000)
         {
         }
         public void Move(GameDirection direction)
@@ -32,8 +33,8 @@ namespace TheLastDefenderGame.GL
         }
         public override void Fire()
         {
-            Bullet bullet = new Bullet(CurrentCell.NextFirableCell(direction), this, direction);
-            fireables.Add(bullet);
+            Fireable fireable =  new Fireable(CurrentCell.NextFirableCell(direction), this, direction, Resources.Exhaust_Fire, RotateFlipType.Rotate90FlipNone, 80);
+            fireables.Add(fireable);
         }
     }
 }

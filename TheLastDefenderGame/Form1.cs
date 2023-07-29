@@ -17,7 +17,7 @@ namespace TheLastDefenderGame
         private Game game;
         private GameCollider collider;
         public int Score { set => labelScore.Text = value.ToString(); }
-        public int Health { set => labelHealth.Text = value.ToString(); }
+        public double Health { set => labelHealth.Text = value.ToString(); }
         public Form1()
         {
             InitializeComponent();

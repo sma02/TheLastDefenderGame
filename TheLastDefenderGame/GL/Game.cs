@@ -107,23 +107,30 @@ namespace TheLastDefenderGame.GL
                 GameObject collidingObject = cell.CurrentGameObject;
                 if (collidingObject.GameObjectType == GameObjectType.PLAYER)
                 {
-                    if (fireables[i].GetType() == typeof(Bullet))
+                    /*if (fireables[i].GetType() == typeof(Bullet))
                     {
                         Player.Health -= 5;
                     }
                     else if (fireables[i].GetType() == typeof(CannonBall))
                     {
                         Player.Health -= 10;
-                    }
+                    }*/
+                    player.Health -= fireables[i].DamagePower * 100 / player.Strength;
                 }
                 else
                 {
-                    Score = 5;
-                    Enemy enemy = GetEnemy(cell);
-                    enemy.Health -= 30;
-                    if (enemy.Health <= 0)
+                    if(fireables[i].OwningCombatant.GameObjectType==GameObjectType.PLAYER)
                     {
-                        RemoveEnemy(enemy);
+                        Score += 5;
+                    }
+                    Enemy enemy = GetEnemy(cell);
+                    if (enemy != null)
+                    {
+                        enemy.Health -= fireables[i].DamagePower * 100 / enemy.Strength;
+                        if (enemy.Health <= 0)
+                        {
+                            RemoveEnemy(enemy);
+                        }
                     }
                 }
                 fireables[i].OwningCombatant.RemoveFireable(fireables[i]);

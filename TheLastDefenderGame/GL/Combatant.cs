@@ -11,13 +11,16 @@ namespace TheLastDefenderGame.GL
     {
         protected List<Fireable> fireables;
         protected GameDirection direction;
+        private double health;
+        private double strength;
 
         public List<Fireable> Fireables { get => fireables; }
-        private int health;
-        public int Health { get => health; set => health = value; }
-        public Combatant(GameObjectType type, Image image, GameCell cell, GameDirection direction, RotateFlipType initialRotate) : base(cell, type, image, initialRotate)
+        public double Health { get => health; set => health = value; }
+        public double Strength { get => strength; set => strength = value; }
+        public Combatant(GameObjectType type, Image image, GameCell cell, GameDirection direction, RotateFlipType initialRotate, double strength) : base(cell, type, image, initialRotate)
         {
             this.direction = direction;
+            this.strength = strength;
             health = 100;
             fireables = new List<Fireable>();
         }

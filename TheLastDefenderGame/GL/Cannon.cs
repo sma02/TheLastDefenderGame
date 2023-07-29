@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheLastDefenderGame.Properties;
 
 namespace TheLastDefenderGame.GL
 {
@@ -11,7 +12,7 @@ namespace TheLastDefenderGame.GL
     {
         const int cooldown = 10;
         int cooldownCount = 0;
-        public Cannon(Image image, GameCell cell, GameDirection direction) : base(image, cell, direction, RotateFlipType.RotateNoneFlipNone)
+        public Cannon(Image image, GameCell cell, GameDirection direction) : base(image, cell, direction, RotateFlipType.RotateNoneFlipNone, 300)
         {
             SetImageOrientation(direction);
         }
@@ -28,7 +29,7 @@ namespace TheLastDefenderGame.GL
 
         protected override Fireable AddFire()
         {
-            return new CannonBall(CurrentCell.NextFirableCell(direction), this, direction);
+            return new Fireable(CurrentCell.NextFirableCell(direction), this, direction, Resources.cannon_ball, RotateFlipType.RotateNoneFlipNone, 80);
         }
     }
 }
