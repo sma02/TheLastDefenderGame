@@ -43,12 +43,12 @@ namespace TheLastDefenderGame.GL
             if (playerY > CurrentCell.Y)
             {
                 direction = GameDirection.Down;
-                nextCell = CurrentCell.NextCell(GameDirection.Down);
+                nextCell = CurrentCell.NextCombatantCell(GameDirection.Down);
             }
             else if (playerY < CurrentCell.Y)
             {
                 direction = GameDirection.Up;
-                nextCell = CurrentCell.NextCell(GameDirection.Up);
+                nextCell = CurrentCell.NextCombatantCell(GameDirection.Up);
             }
             else
             {
@@ -63,7 +63,7 @@ namespace TheLastDefenderGame.GL
                 double distanceX = Math.Sqrt(Math.Abs(playerX - CurrentCell.X));
                 if (distanceX > 3.5f)
                 {
-                    nextCell = CurrentCell.NextCell(direction);
+                    nextCell = CurrentCell.NextCombatantCell(direction);
                 }
                 else if (distanceX < 1.2f)
                 {
@@ -75,7 +75,7 @@ namespace TheLastDefenderGame.GL
                     {
                         direction = GameDirection.Left;
                     }
-                    nextCell = CurrentCell.NextCell(direction);
+                    nextCell = CurrentCell.NextCombatantCell(direction);
                 }
                 else
                 {
@@ -89,7 +89,7 @@ namespace TheLastDefenderGame.GL
 
         protected override Fireable AddFire()
         {
-            return new Bullet(CurrentCell.NextCell(direction), this, direction);
+            return new Bullet(CurrentCell.NextFirableCell(direction), this, direction);
         }
     }
 }

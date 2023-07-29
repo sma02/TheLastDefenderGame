@@ -48,6 +48,16 @@ namespace TheLastDefenderGame.GL
         {
             CurrentGameObject = cell.CurrentGameObject;
         }
+        public GameCell NextCombatantCell(GameDirection gameDirection)
+        {
+            GameCell cell = NextCell(gameDirection);
+            GameObjectType objectType = cell.CurrentGameObject.GameObjectType;
+            if (cell == null || objectType == GameObjectType.WALL || objectType == GameObjectType.PLAYER || objectType == GameObjectType.ENEMY)
+            {
+                return this;
+            }
+            return cell;
+        }
         public GameCell NextCell(GameDirection gameDirection)
         {
             GameCell cell = null;
@@ -79,7 +89,17 @@ namespace TheLastDefenderGame.GL
                     break;
             }
             GameObjectType objectType = cell.CurrentGameObject.GameObjectType;
-            if (cell == null || objectType == GameObjectType.WALL)
+            if (cell == null)
+            {
+                return this;
+            }
+            return cell;
+        }
+        public GameCell NextFirableCell(GameDirection direction)
+        {
+            GameCell cell = NextCell(direction);
+            GameObjectType objectType = cell.CurrentGameObject.GameObjectType;
+            if (objectType == GameObjectType.WALL)
             {
                 return this;
             }

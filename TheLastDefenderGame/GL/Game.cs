@@ -103,7 +103,7 @@ namespace TheLastDefenderGame.GL
         {
             for (int i = 0; i < fireables.Count; i++)
             {
-                GameCell cell = fireables[i].CurrentCell.NextCell(fireables[i].FiringDirection);
+                GameCell cell = fireables[i].CurrentCell.NextFirableCell(fireables[i].FiringDirection);
                 GameObject collidingObject = cell.CurrentGameObject;
                 if (collidingObject.GameObjectType == GameObjectType.PLAYER)
                 {

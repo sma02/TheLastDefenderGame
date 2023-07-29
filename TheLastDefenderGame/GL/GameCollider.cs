@@ -28,7 +28,7 @@ namespace TheLastDefenderGame.GL
         {
             foreach (Fireable fireable in combatantFirables)
             {
-                GameObject gameObject = fireable.CurrentCell.NextCell(fireable.FiringDirection).CurrentGameObject;
+                GameObject gameObject = fireable.CurrentCell.NextFirableCell(fireable.FiringDirection).CurrentGameObject;
                 if (gameObject.GameObjectType == GameObjectType.PLAYER || gameObject.GameObjectType == GameObjectType.ENEMY)
                 {
                     fireables.Add(fireable);

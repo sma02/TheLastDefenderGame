@@ -28,7 +28,7 @@ namespace TheLastDefenderGame.GL
 
         protected override Fireable AddFire()
         {
-            return new CannonBall(CurrentCell.NextCell(direction), this, direction);
+            return new CannonBall(CurrentCell.NextFirableCell(direction), this, direction);
         }
     }
 }

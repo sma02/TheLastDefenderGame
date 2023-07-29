@@ -22,7 +22,7 @@ namespace TheLastDefenderGame.GL
         }
         private GameCell NextCell(GameDirection direction)
         {
-            GameCell nextCell = CurrentCell.NextCell(direction);
+            GameCell nextCell = CurrentCell.NextCombatantCell(direction);
             if (nextCell.CurrentGameObject.GameObjectType == GameObjectType.WALL)
             {
                 nextCell = CurrentCell;
@@ -32,7 +32,7 @@ namespace TheLastDefenderGame.GL
         }
         public override void Fire()
         {
-            Bullet bullet = new Bullet(CurrentCell.NextCell(direction), this, direction);
+            Bullet bullet = new Bullet(CurrentCell.NextFirableCell(direction), this, direction);
             fireables.Add(bullet);
         }
     }

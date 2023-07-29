@@ -25,7 +25,7 @@ namespace TheLastDefenderGame.GL
 
         public bool Move()
         {
-            GameCell nextCell = CurrentCell.NextCell(direction);
+            GameCell nextCell = CurrentCell.NextFirableCell(direction);
             if (nextCell == CurrentCell)
             {
                 CurrentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
