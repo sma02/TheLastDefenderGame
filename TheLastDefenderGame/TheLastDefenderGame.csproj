@@ -55,6 +55,7 @@
     <Compile Include="GL\Cannon.cs" />
     <Compile Include="GL\Fireable.cs" />
     <Compile Include="GL\GameCollider.cs" />
+    <Compile Include="GL\IntelligentMissile.cs" />
     <Compile Include="GL\Tank.cs" />
     <Compile Include="GL\Combatant.cs" />
     <Compile Include="GL\Enemy.cs" />
@@ -118,6 +119,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cannon ball-smaller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\T_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Missile_5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

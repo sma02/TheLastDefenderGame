@@ -9,7 +9,7 @@ namespace TheLastDefenderGame.GL
 {
     public class Fireable : RotateableGameObject
     {
-        private GameDirection direction;
+        protected GameDirection direction;
         private Combatant owningCombatant;
         private int damagePower;
         public Combatant OwningCombatant { get => owningCombatant; set => owningCombatant = value; }
@@ -28,7 +28,7 @@ namespace TheLastDefenderGame.GL
 
         public bool Move()
         {
-            GameCell nextCell = CurrentCell.NextFirableCell(direction);
+            GameCell nextCell = NextCell();
             if (nextCell == CurrentCell)
             {
                 CurrentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
@@ -36,12 +36,20 @@ namespace TheLastDefenderGame.GL
             }
             else
             {
-                GameCell currentCell = CurrentCell;
-                currentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
-                CurrentCell = nextCell;
-                SetImageOrientation(direction);
+                GameObjectType type = nextCell.CurrentGameObject.GameObjectType;
+                if (!(type == GameObjectType.PLAYER || type == GameObjectType.ENEMY))
+                {
+                    GameCell currentCell = CurrentCell;
+                    currentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
+                    CurrentCell = nextCell;
+                    SetImageOrientation(direction);
+                }
                 return true;
             }
+        }
+        public virtual GameCell NextCell()
+        {
+            return CurrentCell.NextFirableCell(direction);
         }
     }
 }

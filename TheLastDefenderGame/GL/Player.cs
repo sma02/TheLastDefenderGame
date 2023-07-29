@@ -33,8 +33,11 @@ namespace TheLastDefenderGame.GL
         }
         public override void Fire()
         {
-            Fireable fireable =  new Fireable(CurrentCell.NextFirableCell(direction), this, direction, Resources.Exhaust_Fire, RotateFlipType.Rotate90FlipNone, 80);
-            fireables.Add(fireable);
+            if (CurrentCell.NextCell(direction).CurrentGameObject.GameObjectType == GameObjectType.NONE)
+            {
+                Fireable fireable = new Fireable(CurrentCell.NextFirableCell(direction), this, direction, Resources.Exhaust_Fire, RotateFlipType.Rotate90FlipNone, 80);
+                fireables.Add(fireable);
+            }
         }
     }
 }

@@ -19,8 +19,11 @@ namespace TheLastDefenderGame.GL
         {
             if (isFiringState)
             {
-                Fireable fireable = AddFire();
-                base.fireables.Add(fireable);
+                if (CurrentCell.NextCell(direction).CurrentGameObject.GameObjectType == GameObjectType.NONE)
+                {
+                    Fireable fireable = AddFire();
+                    base.fireables.Add(fireable);
+                }
             }
         }
         protected abstract Fireable AddFire();
