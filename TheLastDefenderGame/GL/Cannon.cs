@@ -10,7 +10,7 @@ namespace TheLastDefenderGame.GL
 {
     class Cannon : StaticEnemy
     {
-        public Cannon(Image image, GameCell cell, GameDirection direction) : base(image, cell, direction, RotateFlipType.RotateNoneFlipNone, 300)
+        public Cannon(Image image, GameCell cell, GameDirection direction) : base(image, cell, direction, RotateFlipType.RotateNoneFlipNone, 30)
         {
             SetImageOrientation(direction);
             cooldown = 10;
@@ -22,7 +22,7 @@ namespace TheLastDefenderGame.GL
 
         protected override Fireable AddFire()
         {
-            return new Fireable(CurrentCell.NextFirableCell(direction), this, direction, Resources.cannon_ball, RotateFlipType.RotateNoneFlipNone, 80);
+            return new Fireable(CurrentCell.NextFirableCell(direction), this, direction, Resources.cannon_ball, RotateFlipType.RotateNoneFlipNone, 8);
         }
     }
 }

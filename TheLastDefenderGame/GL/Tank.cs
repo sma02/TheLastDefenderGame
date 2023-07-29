@@ -11,7 +11,7 @@ namespace TheLastDefenderGame.GL
     class Tank : MovableEnemy
     {
         private Player player;
-        public Tank(Image image, GameCell cell, Player player, GameDirection direction) : base(image, cell, direction, RotateFlipType.Rotate90FlipNone, 300)
+        public Tank(Image image, GameCell cell, Player player, GameDirection direction) : base(image, cell, direction, RotateFlipType.Rotate90FlipNone, 30)
         {
             this.player = player;
             cooldown = 10;
@@ -78,7 +78,7 @@ namespace TheLastDefenderGame.GL
 
         protected override Fireable AddFire()
         {
-            return new Fireable(CurrentCell.NextFirableCell(direction), this, direction, Resources.Exhaust_Fire, RotateFlipType.Rotate90FlipNone, 15);
+            return new Fireable(CurrentCell.NextFirableCell(direction), this, direction, Resources.Exhaust_Fire, RotateFlipType.Rotate90FlipNone, 2);
         }
     }
 }

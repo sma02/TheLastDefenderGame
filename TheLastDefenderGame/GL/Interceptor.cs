@@ -13,7 +13,7 @@ namespace TheLastDefenderGame.GL
         Player player;
         Point destination;
         int horizontalPetrolling;
-        public Interceptor(Image image, GameCell cell, Player player, GameDirection direction) : base(image, cell, direction, RotateFlipType.Rotate90FlipNone, 400)
+        public Interceptor(Image image, GameCell cell, Player player, GameDirection direction) : base(image, cell, direction, RotateFlipType.Rotate90FlipNone, 40)
         {
             this.player = player;
             destination = new Point(cell.X, cell.Y);
@@ -86,7 +86,7 @@ namespace TheLastDefenderGame.GL
         }
         protected override Fireable AddFire()
         {
-            return new IntelligentMissile(CurrentCell.NextFirableCell(direction), this, player, direction, Resources.Missile_5, RotateFlipType.Rotate90FlipNone, 200);
+            return new IntelligentMissile(CurrentCell.NextFirableCell(direction), this, player, direction, Resources.Missile_5, RotateFlipType.Rotate90FlipNone, 20);
         }
     }
 }

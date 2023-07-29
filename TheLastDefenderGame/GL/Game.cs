@@ -17,7 +17,7 @@ namespace TheLastDefenderGame.GL
         private List<Enemy> enemies;
         private List<Fireable> freeFireables;
         private int score;
-        public int Score { get => score; set => score += value; }
+        public int Score { get => score; set => score = value; }
         public Player Player { get => player; }
         public List<Enemy> Enemies { get => enemies; }
         public List<Fireable> FreeFireables { get => freeFireables; }
@@ -25,7 +25,7 @@ namespace TheLastDefenderGame.GL
         public Game(Form form)
         {
             this.form = form;
-            grid = new GameGrid("maze.txt", 24, 40);
+            grid = new GameGrid("maze.txt", 24, 46);
             player = null;
             enemies = new List<Enemy>();
             freeFireables = new List<Fireable>();
@@ -56,6 +56,7 @@ namespace TheLastDefenderGame.GL
         }
         public void RemovePlayer()
         {
+            DisposeFirables(player);
             player.CurrentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
             player = null;
         }
@@ -81,13 +82,17 @@ namespace TheLastDefenderGame.GL
             }
             enemies.Add(enemy);
         }
-        public void RemoveEnemy(Enemy enemy)
+        private void DisposeFirables(Combatant combatant)
         {
-            foreach (Fireable fireable in enemy.Fireables)
+            foreach (Fireable fireable in combatant.Fireables)
             {
                 freeFireables.Add(fireable);
             }
-            enemy.Fireables.Clear();
+            combatant.Fireables.Clear();
+        }
+        public void RemoveEnemy(Enemy enemy)
+        {
+            DisposeFirables(enemy);
             enemy.CurrentCell.CurrentGameObject = new GameObject(GameObjectType.NONE, ' ');
             enemies.Remove(enemy);
         }
@@ -152,7 +157,7 @@ namespace TheLastDefenderGame.GL
                 {
                     if(fireables[i].OwningCombatant.GameObjectType==GameObjectType.PLAYER)
                     {
-                        Score += 5;
+                        Score += 1;
                     }
                     Enemy enemy = GetEnemy(cell);
                     if (enemy != null)

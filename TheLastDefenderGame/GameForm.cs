@@ -12,15 +12,16 @@ using TheLastDefenderGame.Properties;
 
 namespace TheLastDefenderGame
 {
-    public partial class Form1 : Form
+    public partial class GameForm : Form
     {
         private Game game;
         private GameCollider collider;
-        public int Score { set => labelScore.Text = value.ToString(); }
-        public double Health { set => labelHealth.Text = value.ToString(); }
-        public Form1()
+        public int Score { set => labelScore.Text = "Score: " + value.ToString(); }
+        public double Health { set => labelHealth.Text = "Health: " + value.ToString("N2"); }
+        public GameForm()
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
             game = new Game(this);
             collider = new GameCollider(game);
             Image playerImage = Resources.Tank;
@@ -55,6 +56,8 @@ namespace TheLastDefenderGame
             else if (game.Player != null)
             {
                 game.RemovePlayer();
+                game_Over1.Score = game.Score;
+                game_Over1.Visible = true;
             }
         }
     }
