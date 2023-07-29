@@ -52,7 +52,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GL\Bullet.cs" />
     <Compile Include="GL\Cannon.cs" />
     <Compile Include="GL\Fireable.cs" />
     <Compile Include="GL\GameCollider.cs" />
