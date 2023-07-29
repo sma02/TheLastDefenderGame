@@ -11,7 +11,7 @@ namespace TheLastDefenderGame.GL
     public class Player : Combatant
     {
 
-        public Player(Image image, GameCell cell, GameDirection direction) : base(GameObjectType.PLAYER, image, cell, direction, RotateFlipType.RotateNoneFlipNone, 5000)
+        public Player(Image image, GameCell cell, GameDirection direction) : base(GameObjectType.PLAYER, image, cell, direction, RotateFlipType.RotateNoneFlipNone, 3000)
         {
         }
         public void Move(GameDirection direction)

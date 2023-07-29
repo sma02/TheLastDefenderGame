@@ -10,12 +10,11 @@ namespace TheLastDefenderGame.GL
 {
     class Tank : MovableEnemy
     {
-        private int cooldownCount;
-        private const int cooldown = 10;
         private Player player;
         public Tank(Image image, GameCell cell, Player player, GameDirection direction) : base(image, cell, direction, RotateFlipType.Rotate90FlipNone, 300)
         {
             this.player = player;
+            cooldown = 10;
         }
 
         public override void Move()
@@ -26,21 +25,12 @@ namespace TheLastDefenderGame.GL
             SetImageOrientation(direction);
 
         }
-        private void HandleFiringCooldown()
-        {
-            if (cooldownCount >= cooldown)
-            {
-                isFiringState = true;
-                cooldownCount = 0;
-            }
-        }
         public override GameCell NextCell()
         {
             GameCell nextCell;
             cooldownCount++;
             int playerX = player.CurrentCell.X;
             int playerY = player.CurrentCell.Y;
-            isFiringState = false;
             if (playerY > CurrentCell.Y)
             {
                 direction = GameDirection.Down;
@@ -81,9 +71,7 @@ namespace TheLastDefenderGame.GL
                 else
                 {
                     nextCell = CurrentCell;
-                    HandleFiringCooldown();
                 }
-
             }
             return nextCell;
         }

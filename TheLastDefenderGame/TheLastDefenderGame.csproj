@@ -66,7 +66,7 @@
     <Compile Include="GL\GameGrid.cs" />
     <Compile Include="GL\GameObject.cs" />
     <Compile Include="GL\GameObjectType.cs" />
-    <Compile Include="GL\Plane.cs" />
+    <Compile Include="GL\Interceptor.cs" />
     <Compile Include="GL\Player.cs" />
     <Compile Include="GL\RotateableGameObject.cs" />
     <Compile Include="GL\StaticEnemy.cs" />
@@ -125,6 +125,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Missile_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RL.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

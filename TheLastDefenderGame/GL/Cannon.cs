@@ -10,21 +10,14 @@ namespace TheLastDefenderGame.GL
 {
     class Cannon : StaticEnemy
     {
-        const int cooldown = 10;
-        int cooldownCount = 0;
         public Cannon(Image image, GameCell cell, GameDirection direction) : base(image, cell, direction, RotateFlipType.RotateNoneFlipNone, 300)
         {
             SetImageOrientation(direction);
+            cooldown = 10;
         }
         public override void Render()
         {
-            isFiringState = false;
             cooldownCount++;
-            if (cooldownCount >= cooldown)
-            {
-                isFiringState = true;
-                cooldownCount = 0;
-            }
         }
 
         protected override Fireable AddFire()

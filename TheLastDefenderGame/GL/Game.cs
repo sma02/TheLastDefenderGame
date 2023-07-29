@@ -70,9 +70,9 @@ namespace TheLastDefenderGame.GL
             {
                 enemy = new Cannon(image, cell, direction);
             }
-            else if(type==typeof(Plane))
+            else if(type==typeof(Interceptor))
             {
-                enemy = new Plane(image, cell, player, direction);
+                enemy = new Interceptor(image, cell, player, direction);
             }
             else
             {

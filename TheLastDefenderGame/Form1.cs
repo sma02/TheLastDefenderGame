@@ -27,7 +27,7 @@ namespace TheLastDefenderGame
             playerImage.RotateFlip(RotateFlipType.Rotate180FlipNone);
             game.AddPlayer(2, 2, playerImage);
             game.AddEnemy(typeof(Tank), Resources.EnemyTank, 30, 20, GameDirection.Left);
-            game.AddEnemy(typeof(Plane), Resources.T_20, 20,10, GameDirection.Left);
+            game.AddEnemy(typeof(Interceptor), Resources.RL, 20,10, GameDirection.Left);
             game.AddEnemy(typeof(Cannon), Resources.cannon, 14, 8, GameDirection.Down);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
